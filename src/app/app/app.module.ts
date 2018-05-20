@@ -1,4 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
@@ -10,6 +11,7 @@ import { AboutusComponent } from "./components/aboutus/aboutus.component";
 
 import {routes} from './app.routes';
 import { CoreModule } from "../core/core.module";
+import { UiToolkitModule } from "../ui-toolkit/ui-toolkit.module";
 
 @NgModule({
   declarations: [
@@ -19,9 +21,10 @@ import { CoreModule } from "../core/core.module";
     HomeComponent,
     AboutusComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes),
+  imports: [BrowserModule,BrowserAnimationsModule, RouterModule.forRoot(routes),
 
-    CoreModule
+    CoreModule,
+    UiToolkitModule
   
   ],
   providers: [],
