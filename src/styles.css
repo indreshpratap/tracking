@@ -10,4 +10,5 @@ mat-toolbar a {
     color:white;
     margin-left: 5px;
     display: inline-block;
+    font-size: .9rem;
 }

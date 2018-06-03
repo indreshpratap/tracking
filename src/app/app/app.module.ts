@@ -12,6 +12,7 @@ import { AboutusComponent } from "./components/aboutus/aboutus.component";
 import { routes } from './app.routes';
 import { CoreModule } from "../core/core.module";
 import { UiToolkitModule } from "../ui-toolkit/ui-toolkit.module";
+import { AdminModule } from "../modules/admin/admin.module";
 
 @NgModule({
   declarations: [
