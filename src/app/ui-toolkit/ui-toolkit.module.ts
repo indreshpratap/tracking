@@ -2,8 +2,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { MATERIAL } from "./mat-material";
-
-const IMP_EXP = [CommonModule, FormsModule, ...MATERIAL];
+import {FlexLayoutModule} from '@angular/flex-layout';
+const IMP_EXP = [CommonModule, FormsModule, FlexLayoutModule, ...MATERIAL];
 @NgModule({
   imports: IMP_EXP,
   exports: IMP_EXP,
