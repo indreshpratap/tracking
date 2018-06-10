@@ -1,23 +1,18 @@
 <app-header></app-header>
 <mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened="true">
-       
-        <mat-nav-list dense>
-            <h3 mat-subheader>Projects</h3>
-              <a mat-list-item routerLink="/home/admin/new-client"> New Client  </a>
-              <a mat-list-item routerLink="/home/admin/new-project"> New Project  </a>
-              <!-- <a mat-list-item routerLink="">  </a>
-              <a mat-list-item routerLink="">  </a>
-              <a mat-list-item routerLink="">  </a>
-              <a mat-list-item routerLink="">  </a>
-              <a mat-list-item routerLink="">  </a>
-              <a mat-list-item routerLink="">  </a> -->
-           </mat-nav-list>
-    </mat-drawer>
-    <mat-drawer-content>
-      <div class="content">
-        <router-outlet></router-outlet>
+  <mat-drawer mode="side" opened="true">
 
-      </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
+    <mat-nav-list dense>
+      <ng-container *ngFor="let m of selectedMenu">
+        <h3 mat-subheader><b>{{m.label}}</b></h3>
+        <a *ngFor="let item of m.children" mat-list-item [routerLink]="[item.routerLink]">{{item.label}} </a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

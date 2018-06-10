@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MENU } from '../../app.menu.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  selectedMenu;
   constructor() { }
 
   ngOnInit() {
+    this.selectedMenu = MENU.ADMIN;
   }
 
 }

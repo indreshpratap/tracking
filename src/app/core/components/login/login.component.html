@@ -1,7 +1,10 @@
 <form #login="ngForm">
-  <mat-card style="width: 300px;margin-left:30%">
+  <mat-card style="width: 300px;margin-left:30%;margin-top:10%">
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
+      <div fxLayout="column" fxLayoutGap="10px">
+
+      
       <mat-form-field>
         <input required minlength="5" matInput name="username" type="text" placeholder="Login" [(ngModel)]="username">
       </mat-form-field>
@@ -18,9 +21,9 @@
         <span *ngIf="login.controls['password'].errors.required">Password required</span>
       </div>
 
-
+</div>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions style="text-align: center">
       <button [disabled]="login.invalid" mat-raised-button color="primary" (click)="doLogin()">Login</button>
       <!-- Valid: {{login.valid}} {{login.controls['username'].errors | json}} -->
     </mat-card-actions>
