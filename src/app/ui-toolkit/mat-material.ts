@@ -5,6 +5,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 export const MATERIAL = [
   MatCardModule,
@@ -13,5 +14,6 @@ export const MATERIAL = [
   MatFormFieldModule,
   MatInputModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatSelectModule
 ];
