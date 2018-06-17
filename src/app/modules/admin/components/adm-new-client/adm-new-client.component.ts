@@ -33,7 +33,7 @@ export class AdmNewClientComponent implements OnInit {
       orginationName: new FormControl(null, Validators.required),
       contactPerson: new FormControl(),
       phone: new FormControl(),
-      email: new FormControl(null,[Validators.required,Validators.minLength(10)]),
+      email: new FormControl(null,[Validators.required,Validators.minLength(10),Validators.email]),
       address: new FormControl(),
     });
   }
