@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-adm-new-client',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AdmNewClientComponent implements OnInit {
 
   regForm: FormGroup;
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit() {
     this.prepareForm();
@@ -24,8 +25,18 @@ export class AdmNewClientComponent implements OnInit {
   }
   save() {
     console.log(this.regForm.value);
-    alert("Client Saved");
-    this.regForm.reset();
+    if(this.regForm.valid){
+      this.http.post('http://localhost:3000/api/admin/save-client',this.regForm.value)
+      .subscribe((res:any)=>{
+        if(res.status){
+          alert("Client Saved");
+          this.regForm.reset();
+        }else {
+          alert('Failed to save the client!');
+        }
+      });
+    }
+  
   }
   prepareForm() {
     this.regForm = new FormGroup({
