@@ -27,5 +27,7 @@
       <button [disabled]="login.invalid" mat-raised-button color="primary" (click)="doLogin()">Login</button>
       <!-- Valid: {{login.valid}} {{login.controls['username'].errors | json}} -->
     </mat-card-actions>
+
+    <a routerLink="/home">Go home</a>
   </mat-card>
 </form>

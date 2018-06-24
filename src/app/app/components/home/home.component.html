@@ -8,6 +8,7 @@
         <a *ngFor="let item of m.children" mat-list-item [routerLink]="[item.routerLink]">{{item.label}} </a>
       </ng-container>
     </mat-nav-list>
+    <button (click)="doLogout()">Logout</button>
   </mat-drawer>
   <mat-drawer-content>
     <div class="content">

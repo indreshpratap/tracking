@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { RestService } from '../../../../shared/rest.service';
 
 @Component({
   selector: 'app-adm-new-client',
@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AdmNewClientComponent implements OnInit {
 
   regForm: FormGroup;
-  constructor(private http:HttpClient) { }
+  constructor(private rest:RestService) { }
 
   ngOnInit() {
     this.prepareForm();
@@ -26,8 +26,9 @@ export class AdmNewClientComponent implements OnInit {
   save() {
     console.log(this.regForm.value);
     if(this.regForm.valid){
-      this.http.post('http://localhost:3000/api/admin/save-client',this.regForm.value)
-      .subscribe((res:any)=>{
+      this.rest.post('admin/save-client',this.regForm.value)
+      .subscribe(res=>{
+        
         if(res.status){
           alert("Client Saved");
           this.regForm.reset();

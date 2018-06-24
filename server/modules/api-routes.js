@@ -19,10 +19,54 @@ api.get("/",(req,res)=>{
 });
 
 
+api.get('/add-admin',(req,res)=>{
+    db.users.insert({
+        name:"admin",
+        role:"admin",
+        password:"admin",
+        username:"admin",
+        email:"admin@email.com"
+    },(err,usr)=>{
+        if(err) handleError(res,err,"Failed to save client");
+        handleOk(res,usr);
+    })
+});
+
+api.get('/add-user',(req,res)=>{
+    var name = req.query.name;
+    var password = req.query.password;
+    var username = req.query.username;
+    db.users.insert({
+        name:name,
+        role:"user",
+        password:password,
+        username:username,
+        email:username+"@email.com"
+    },(err,usr)=>{
+        if(err) handleError(res,err,"Failed to save client");
+        handleOk(res,usr);
+    })
+});
+
+api.post('/dologin',(req,res)=>{
+    var body = req.body;
+    db.users.findOne({username:body.username,password:body.password},
+        (err,user)=>{
+            if(err) handleError(res,err,"Failed to login");
+            else if(!user){
+                handleError(res,null,"Username or password is incorrect!");
+            }else {
+                var u = {name:user.name,role:user.role};
+            handleOk(res,u);
+            }
+    });
+});
+
+
 api.get("/admin/fetch-client",(req,res)=>{
-    db.client.find({active:true},(err,docs)=> {
+    db.client.find({},(err,docs)=> {
         if(err) handleError(res,err,"Failed to fetch client");
-      
+      console.log(docs);
         handleOk(res,docs);
     });
 });

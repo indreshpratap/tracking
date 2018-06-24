@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RestService } from '../../../shared/rest.service';
+import { AuthService } from '../../../shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +12,25 @@ export class LoginComponent implements OnInit {
 
   username;
   password;
-  constructor(private router:Router) { }
+  constructor(private router: Router, 
+    private rest: RestService,
+    private auth:AuthService) { }
 
   ngOnInit() {
   }
 
-  doLogin(){
-    this.router.navigate(['home']);
+  doLogin() {
+    this.rest.post('dologin', { username: this.username, password: this.password })
+      .subscribe(res => {
+        if (res.status) {
+        
+          this.auth.login(res.data);
+          this.router.navigate(['home']);
+
+        } else {
+          alert(res.msg);
+        }
+      });
   }
 
 }
