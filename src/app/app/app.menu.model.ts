@@ -3,6 +3,7 @@ interface MenuItem {
     label: string;
 }
 const ADMIN_PREFIX = "/home/admin/";
+const INVOICE_PREFIX = "/home/invoice/";
 export const MENU = {
     ADMIN: [
         {
@@ -16,6 +17,13 @@ export const MENU = {
             label: "Project", children: [
                 
                 { routerLink: `${ADMIN_PREFIX}new-project`, label: "New Project" },
+            ]
+        }],
+        USER:[
+        {
+            label: "Invoice", children: [
+                
+                { routerLink: `${INVOICE_PREFIX}list`, label: "Invoices" },
             ]
         }
     ]

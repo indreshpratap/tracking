@@ -13,6 +13,7 @@ import { routes } from './app.routes';
 import { CoreModule } from "../core/core.module";
 import { UiToolkitModule } from "../ui-toolkit/ui-toolkit.module";
 import { AdminModule } from "../modules/admin/admin.module";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AdminModule } from "../modules/admin/admin.module";
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    SharedModule.forRoot(),
     CoreModule,
     UiToolkitModule
   ],
